@@ -1,6 +1,6 @@
-package com.example.blogproject.dto;
+package com.example.blogproject.member.dto;
 
-import com.example.blogproject.domain.Member;
+import com.example.blogproject.member.domain.Member;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,7 @@
-package com.example.blogproject.repository;
+package com.example.blogproject.member.repository;
 
 
-import com.example.blogproject.domain.Member;
+import com.example.blogproject.member.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {

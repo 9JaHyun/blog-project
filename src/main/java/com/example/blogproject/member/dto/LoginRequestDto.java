@@ -1,4 +1,4 @@
-package com.example.blogproject.dto;
+package com.example.blogproject.member.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

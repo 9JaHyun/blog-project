@@ -1,8 +1,8 @@
-package com.example.blogproject.controller;
+package com.example.blogproject.member.controller;
 
-import com.example.blogproject.dto.JoinRequestDto;
-import com.example.blogproject.dto.LoginRequestDto;
-import com.example.blogproject.service.MemberService;
+import com.example.blogproject.member.dto.JoinRequestDto;
+import com.example.blogproject.member.dto.LoginRequestDto;
+import com.example.blogproject.member.service.MemberService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

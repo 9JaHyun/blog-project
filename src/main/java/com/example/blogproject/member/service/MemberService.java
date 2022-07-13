@@ -1,8 +1,8 @@
-package com.example.blogproject.service;
+package com.example.blogproject.member.service;
 
-import com.example.blogproject.dto.JoinRequestDto;
-import com.example.blogproject.repository.MemberRepository;
-import com.example.blogproject.domain.Member;
+import com.example.blogproject.member.dto.JoinRequestDto;
+import com.example.blogproject.member.repository.MemberRepository;
+import com.example.blogproject.member.domain.Member;
 import org.springframework.stereotype.Service;
 
 @Service
