@@ -1,17 +1,20 @@
 package com.example.blogproject.member.service;
 
+import com.example.blogproject.member.domain.Member;
 import com.example.blogproject.member.dto.JoinRequestDto;
 import com.example.blogproject.member.repository.MemberRepository;
-import com.example.blogproject.member.domain.Member;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public MemberService(MemberRepository memberRepository) {
+    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder) {
         this.memberRepository = memberRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public String join(JoinRequestDto dto) {
@@ -33,6 +36,8 @@ public class MemberService {
 
         // dto => entity 로 변환
         Member member = dto.toEntity();
+
+        member.setPassword(passwordEncoder.encode(member.getPassword()));
 
         // Entity Insert
         memberRepository.save(member);
