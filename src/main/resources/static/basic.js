@@ -1,7 +1,6 @@
 let targetId;
 
 $(document).ready(function () {
-    alert("cookie")
     if ($.cookie('token')) {
         $.ajaxSetup({
             headers: {
