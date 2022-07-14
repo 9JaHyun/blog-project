@@ -1,5 +1,10 @@
-package com.example.blogproject.comment;
+package com.example.blogproject.comment.controller;
 
+import com.example.blogproject.comment.dto.CommentDeleteRequestDto;
+import com.example.blogproject.comment.dto.CommentResponseDto;
+import com.example.blogproject.comment.dto.CommentSaveRequestDto;
+import com.example.blogproject.comment.service.CommentService;
+import com.example.blogproject.comment.dto.CommentUpdateRequestDto;
 import com.example.blogproject.config.security.MemberDetailsImpl;
 import java.util.List;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

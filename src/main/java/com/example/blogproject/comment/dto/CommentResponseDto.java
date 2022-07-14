@@ -1,5 +1,6 @@
-package com.example.blogproject.comment;
+package com.example.blogproject.comment.dto;
 
+import com.example.blogproject.comment.domain.Comments;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
 

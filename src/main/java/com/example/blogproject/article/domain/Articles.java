@@ -1,4 +1,4 @@
-package com.example.blogproject.article;
+package com.example.blogproject.article.domain;
 
 import java.time.LocalDateTime;
 import javax.persistence.Column;

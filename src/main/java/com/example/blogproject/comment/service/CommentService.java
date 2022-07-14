@@ -1,7 +1,13 @@
-package com.example.blogproject.comment;
+package com.example.blogproject.comment.service;
 
-import com.example.blogproject.article.ArticleRepository;
-import com.example.blogproject.article.Articles;
+import com.example.blogproject.article.repository.ArticleRepository;
+import com.example.blogproject.article.domain.Articles;
+import com.example.blogproject.comment.domain.Comments;
+import com.example.blogproject.comment.dto.CommentDeleteRequestDto;
+import com.example.blogproject.comment.dto.CommentResponseDto;
+import com.example.blogproject.comment.dto.CommentSaveRequestDto;
+import com.example.blogproject.comment.dto.CommentUpdateRequestDto;
+import com.example.blogproject.comment.repository.CommentRepository;
 import com.example.blogproject.member.domain.Member;
 import com.example.blogproject.member.repository.MemberRepository;
 import java.util.List;

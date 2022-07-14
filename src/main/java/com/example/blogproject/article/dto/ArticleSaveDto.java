@@ -1,5 +1,6 @@
-package com.example.blogproject.article;
+package com.example.blogproject.article.dto;
 
+import com.example.blogproject.article.domain.Articles;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

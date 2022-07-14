@@ -1,6 +1,6 @@
-package com.example.blogproject.comment;
+package com.example.blogproject.comment.domain;
 
-import com.example.blogproject.article.Articles;
+import com.example.blogproject.article.domain.Articles;
 import com.example.blogproject.member.domain.Member;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
