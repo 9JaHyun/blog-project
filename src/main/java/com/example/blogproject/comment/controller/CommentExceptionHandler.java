@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@ControllerAdvice(basePackages = "com.example.blogproject.comment")
+@ControllerAdvice(basePackageClasses = CommentController.class)
 public class CommentExceptionHandler {
 
     @ExceptionHandler

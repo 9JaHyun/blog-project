@@ -5,8 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@ControllerAdvice(basePackages = "com.example.blogproject.member")
-public class ArticleExceptionHandler {
+@ControllerAdvice(basePackageClasses = MemberController.class)
+public class MemberExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity<String> errorToCreateArticle(IllegalArgumentException e) {

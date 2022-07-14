@@ -23,12 +23,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     private final JWTAuthProvider jwtAuthProvider;
     private final HeaderTokenExtractor headerTokenExtractor;
 
     public WebSecurityConfig(
-            JWTAuthProvider jwtAuthProvider,
-            HeaderTokenExtractor headerTokenExtractor
+          JWTAuthProvider jwtAuthProvider,
+          HeaderTokenExtractor headerTokenExtractor
     ) {
         this.jwtAuthProvider = jwtAuthProvider;
         this.headerTokenExtractor = headerTokenExtractor;
@@ -42,19 +43,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) {
         auth
-                .authenticationProvider(formLoginAuthProvider())
-                .authenticationProvider(jwtAuthProvider);
+              .authenticationProvider(formLoginAuthProvider())
+              .authenticationProvider(jwtAuthProvider);
     }
 
     @Override
     public void configure(WebSecurity web) {
         // h2-console 사용에 대한 허용 (CSRF, FrameOptions 무시)
         web
-                .ignoring()
-                .antMatchers("/h2-console/**");
+              .ignoring()
+              .antMatchers("/h2-console/**");
 
         web.ignoring()
               .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+
+        web.ignoring()
+              .antMatchers("/**/api-docs",
+                    "/swagger-resources",
+                    "/swagger-resources/**",
+                    "/configuration/ui",
+                    "/configuration/security",
+                    "/swagger-ui.html",
+                    "/webjars/**",
+                    "/v3/api-docs/**",
+                    "/swagger-ui/**");
     }
 
     @Override
@@ -63,21 +75,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // 서버에서 인증은 JWT로 인증하기 때문에 Session의 생성을 막습니다.
         http
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+              .sessionManagement()
+              .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.authorizeRequests()
-              .anyRequest().permitAll();
-//                .and()
-//                // [로그아웃 기능]
-//                .logout()
-//                // 로그아웃 요청 처리 URL
-//                .logoutUrl("/user/logout")
-//                .permitAll()
-//                .and()
-//                .exceptionHandling()
-//                // "접근 불가" 페이지 URL 설정
-//                .accessDeniedPage("/forbidden.html");
+              .antMatchers("/v1/**").permitAll()
+              .anyRequest().permitAll()
+              .and()
+              // [로그아웃 기능]
+              .logout()
+              // 로그아웃 요청 처리 URL
+              .logoutUrl("/user/logout")
+              .permitAll()
+              .and()
+              .exceptionHandling()
+              // "접근 불가" 페이지 URL 설정
+              .accessDeniedPage("/forbidden.html");
 
         /*
          * 1.
@@ -86,8 +99,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          * JwtFilter       : 서버에 접근시 JWT 확인 후 인증을 실시합니다.
          */
         http
-                .addFilterBefore(formLoginFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
+              .addFilterBefore(formLoginFilter(), UsernamePasswordAuthenticationFilter.class)
+              .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean
@@ -115,6 +128,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Static 정보 접근 허용
         skipPathList.add("GET,/images/**");
         skipPathList.add("GET,/css/**");
+        skipPathList.add("GET,/css/**");
 
         // h2-console 허용
         skipPathList.add("GET,/h2-console/**");
@@ -128,14 +142,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         skipPathList.add("GET,/favicon.ico");
 
+        // swagger
+        skipPathList.add("GET, /api/v2/**");
+        skipPathList.add("GET, /health");
+        skipPathList.add("GET, /swagger-ui.html");
+        skipPathList.add("GET, /swagger/**");
+        skipPathList.add("GET, /swagger-resources/**");
+        skipPathList.add("GET, /webjars/**");
+        skipPathList.add("GET, /v2/api-docs");
+
         FilterSkipMatcher matcher = new FilterSkipMatcher(
-                skipPathList,
-                "/**"
+              skipPathList,
+              "/**"
         );
 
         JwtAuthFilter filter = new JwtAuthFilter(
-                matcher,
-                headerTokenExtractor
+              matcher,
+              headerTokenExtractor
         );
         filter.setAuthenticationManager(super.authenticationManagerBean());
 
