@@ -1,0 +1,54 @@
+POST http://localhost:8080/user/signup?username=user1&password=1111&rePassword=1111&nickname="hello"
+Content-Type: application/x-www-form-urlencoded
+
+###
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+  "username": "user1",
+  "password": "1111"
+}
+
+###
+
+POST http://localhost:8080/api/comment
+Authorization: BEARER eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJFWFBJUkVEX0RBVEUiOjE2NTgwNDIyMzQsImlzcyI6InNwYXJ0YSIsIlVTRVJfTkFNRSI6InVzZXIxIn0.6OA0fHQe6KC34GvtpT3IBdbrfRQ18EZSinH5jBHRQGM
+Content-Type: application/json
+
+{
+  "content": "댓글3",
+  "articlesId": 1
+}
+###
+
+GET http://localhost:8080/api/comment/1
+Content-Type: application/json
+Authorization: BEARER eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJFWFBJUkVEX0RBVEUiOjE2NTgwMzE1NzIsImlzcyI6InNwYXJ0YSIsIlVTRVJfTkFNRSI6InVzZXIxIn0.PxXP3hJ92ssQmJ3cwpLFDWABSXs_-DUkuq1dTv46aZI
+
+<> 2022-07-14T131959.200.json
+
+
+###
+PUT http://localhost:8080/api/comment
+Content-Type: application/json
+Authorization: BEARER eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJFWFBJUkVEX0RBVEUiOjE2NTgwMzE1NzIsImlzcyI6InNwYXJ0YSIsIlVTRVJfTkFNRSI6InVzZXIxIn0.PxXP3hJ92ssQmJ3cwpLFDWABSXs_-DUkuq1dTv46aZI
+
+{
+  "id": 6,
+  "content": "새로운 댓글"
+}
+<> 2022-07-14T132005.200.html
+
+###
+
+DELETE http://localhost:8080/api/comment
+Content-Type: application/json
+Authorization: BEARER eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJFWFBJUkVEX0RBVEUiOjE2NTgwMzE1NzIsImlzcyI6InNwYXJ0YSIsIlVTRVJfTkFNRSI6InVzZXIxIn0.PxXP3hJ92ssQmJ3cwpLFDWABSXs_-DUkuq1dTv46aZI
+
+{
+  "id": 1
+}
+<> 2022-07-14T132005.200.html
+
+###

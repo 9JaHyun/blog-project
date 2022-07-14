@@ -23,15 +23,15 @@ public class MemberService {
         String nickname = dto.getNickname();
 
         if (!password.equals(rePassword)) {
-            return "회원가입 실패";
+            throw new IllegalArgumentException("비밀번호와 비밀번호 재확인은 일치해야 합니다.");
         }
 
         if (password.contains(nickname)) {
-            return "회원가입 실패";
+            throw new IllegalArgumentException("비밀번호에 닉네임이 포함되어서는 안됩니다.");
         }
 
         if (memberRepository.findByNickname(nickname) != null) {
-            return "중복된 닉네임입니다";
+            throw new IllegalArgumentException("중복되는 닉네임 입니다.");
         }
 
         // dto => entity 로 변환

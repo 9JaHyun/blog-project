@@ -1,0 +1,34 @@
+POST http://localhost:8080/user/signup?username=user1&password=1111&rePassword=1111&nickname="hello"
+Content-Type: application/x-www-form-urlencoded
+
+###
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+  "username": "user1",
+  "password": "1111"
+}
+
+###
+
+POST http://localhost:8080/api/articles?title=제목2&writer=글쓴이2&content=내용2
+Authorization: BEARER eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJFWFBJUkVEX0RBVEUiOjE2NTgwMzE1NzIsImlzcyI6InNwYXJ0YSIsIlVTRVJfTkFNRSI6InVzZXIxIn0.PxXP3hJ92ssQmJ3cwpLFDWABSXs_-DUkuq1dTv46aZI
+Content-Type: application/x-www-form-urlencoded
+
+###
+GET http://localhost:8080/api/articles
+Content-Type: application/json
+Authorization: BEARER eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJFWFBJUkVEX0RBVEUiOjE2NTgwMzE1NzIsImlzcyI6InNwYXJ0YSIsIlVTRVJfTkFNRSI6InVzZXIxIn0.PxXP3hJ92ssQmJ3cwpLFDWABSXs_-DUkuq1dTv46aZI
+
+<> 2022-07-14T131959.200.json
+
+
+###
+GET http://localhost:8080/api/articles/1
+Authorization: BEARER eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJFWFBJUkVEX0RBVEUiOjE2NTgwMzE1NzIsImlzcyI6InNwYXJ0YSIsIlVTRVJfTkFNRSI6InVzZXIxIn0.PxXP3hJ92ssQmJ3cwpLFDWABSXs_-DUkuq1dTv46aZI
+
+<> 2022-07-14T132005.200.html
+
+
+###
